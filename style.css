@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+}
+.hu_h2 {
+    text-align: center;
+}
+.human_choice{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.human_choice > * {
+    flex: 1;
+}
+button {
+    
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  padding: 20px 50px;
+  margin: 50px;
+}
+.rock {
+    height: 30px;
+    width: 50px;
+}

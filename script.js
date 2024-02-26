@@ -16,8 +16,8 @@ function computer_choice ()
 //check winninr function
 //TWO arguments
 //computer choice and human choice
-//IF both equal, then return a draw
-//IF human wins, win++, IF  lost then lost ++
+// IF both equal, then return a draw
+// IF human wins, win++, IF  lost then lost ++
 
 function checkWinner(comp_choice, hum_choice)
 {
@@ -68,17 +68,17 @@ function checkWinner(comp_choice, hum_choice)
 //IF win>lose alert user won
 //ELSE alert user lost
 
-function game() {
+function game(humanChoice) {
     
     for(let y = 0; y< 5; y++)
     {
-        humanChoice = prompt("Please Enter your Choice");
-        humanChoice = humanChoice.toLowerCase();
+        
+        let lowerChoice = humanChoice.toLowerCase();
         let i = 0
         let j = 0;
         while (i < 3)
             {
-                if(humanChoice != choices[i])
+                if(lowerChoice != choices[i])
                 {
                     j++;
                 }
@@ -117,4 +117,12 @@ function game() {
     lost = 0;
     draw = 0;
 }
-game()
+
+buttonRock = document.querySelector('.Rock')
+buttonPaper = document.querySelector('.Paper')
+buttonScissors = document.querySelector('.Scissors')
+
+buttonPaper.addEventListener('click', game('Paper'))
+buttonRock.addEventListener('click', game('Rock'))
+buttonScissors.addEventListener('click', game('Scissors'))
+
