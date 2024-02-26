@@ -1,3 +1,7 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
 h1 {
     text-align: center;
 }
@@ -29,4 +33,27 @@ button {
 .rock {
     height: 30px;
     width: 50px;
+}
+.reset {
+    width: 300px;
+    align-self: center;
+}
+.score {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.score > p {
+    font-size: x-large;
+    font-weight: 200;
+}
+
+.comp_choose {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.comp_choose > p {
+    font-size: x-large;
+    font-weight: 200;
 }

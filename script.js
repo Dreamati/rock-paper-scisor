@@ -68,61 +68,83 @@ function checkWinner(comp_choice, hum_choice)
 //IF win>lose alert user won
 //ELSE alert user lost
 
-function game(humanChoice) {
+function game(e) {
     
-    for(let y = 0; y< 5; y++)
-    {
-        
-        let lowerChoice = humanChoice.toLowerCase();
-        let i = 0
-        let j = 0;
-        while (i < 3)
-            {
-                if(lowerChoice != choices[i])
-                {
-                    j++;
-                }
-                i++;
-            }
-        if (j==3)
+    // for(let y = 0; y< 5; y++)
+    // {
+        let lowerChoice = "No";
+
+        if(e.target.classList == "Paper")
         {
-            alert("please enter one of the following: 'rock', 'paper', 'scissor'");
-            j = 0;
-            y--;
-            
-        }
+             lowerChoice = "paper";
+        }  
+
+        else if(e.target.classList == "Rock")
+        {
+             lowerChoice = "rock";
+        }  
         else {
-            comp_choice = computer_choice()
-            checkWinner(comp_choice, humanChoice);
-            console.log("Compute choose :" + comp_choice);
-            console.log("You Choose: " + humanChoice);
-            console.log(`Won: ${win}, Lost: ${lost}, Draw: ${draw}`)
-        }
+            lowerChoice = "scissor";
+        }  
+
+        
+        
+        
+        comp_choice = computer_choice()
+        compScore.textContent = comp_choice;
+        checkWinner(comp_choice, lowerChoice);
+        console.log("Compute choose :" + comp_choice);
+        console.log("You Choose: " + lowerChoice);
+        console.log(`Won: ${win}, Lost: ${lost}, Draw: ${draw}`)
+    
         
 
+    scoreUpdate.textContent = `Won:${win} Lost:${lost} Draw:${draw}`;
+    
+
+    if (win + lost + draw == 5)
+    {
+        if (win>lost)
+            {
+                scoreUpdate.textContent = `You Won! ${win} - ${lost}`
+            }
+
+        else if (lost>win)
+            {
+                scoreUpdate.textContent = `You Lost. ${lost} - ${win} `
+            }
+        else if (lost==win)
+            {
+                scoreUpdate.textContent = `You Drew. ${win} - ${lost} `
+            }
+
+        
     }
-    if (win>lost)
-        {
-            alert("You Won!")
-        }
-    else if (lost>win)
-        {
-            alert("You Lost")
-        }
-    else if (lost==win)
-        {
-            alert("It's a draw")
-        }
+    if (win + lost + draw>5)
+    {
+        alert("Please Press Re-Start To Proced!")
+        scoreUpdate.textContent = '';
+        compScore.textContent = '';
+    }
+}
+function reset()
+{
     win = 0;
     lost = 0;
     draw = 0;
 }
 
-buttonRock = document.querySelector('.Rock')
-buttonPaper = document.querySelector('.Paper')
-buttonScissors = document.querySelector('.Scissors')
+scoreUpdate = document.querySelector('.score_update')
+Reset = document.querySelector('.reset');
 
-buttonPaper.addEventListener('click', game('Paper'))
-buttonRock.addEventListener('click', game('Rock'))
-buttonScissors.addEventListener('click', game('Scissors'))
+buttonRock = document.querySelector('button.Rock')
+buttonPaper = document.querySelector('button.Paper')
+buttonScissors = document.querySelector('button.Scissors')
+
+buttonPaper.addEventListener("click", game)
+buttonRock.addEventListener("click", game)
+buttonScissors.addEventListener("click", game)
+
+Reset.addEventListener('click', reset)
+compScore = document.querySelector('.comp_score')
 
